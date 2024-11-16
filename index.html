@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alarm-Pradip Mahajan</title>
+    <style>
+        body{
+            background-image: url('https://images.pexels.com/photos/18242151/pexels-photo-18242151/free-photo-of-person-with-face-mask-sitting-with-hammer-in-hands.jpeg');
+           background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin:0;
+           display: grid;
+          background-repeat: repeat-x;
+        }
+        body {
+            background-color: black;
+            background-size: contain;
+            background-position: center;
+        }
+        
+    .all{
+      
+        width:200px;
+        height:400px;
+        margin:auto;
+        padding:15px;
+        align-items: center;
+    
+    }
+    #nam{
+        background: linear-gradient(123deg,red,white transparent);
+        font-size: 35px;
+       text-align: center;
+       align-items: center;
+       margin-top: 120px;
+       text-shadow:white 2px 3px 3px;
+        
+    }
+    #get{
+        text-align: center;
+        width:200px;
+        height:30px;
+        border-radius: 15px;
+        border: hidden;
+        background:linear-gradient(120deg,rgb(77, 214, 226),rgb(54, 174, 172),rgb(10, 161, 161));
+         color:black;
+    }
+    #get::placeholder{
+        color:black;
+    }
+    #btn{
+        width:110px;
+        height:30px;
+        margin:27px;
+        margin-left: 50px;
+        display: flex;
+        background: linear-gradient(90deg,rgb(218, 154, 70),rgb(241, 106, 9));
+        border-radius: 10px;
+        font-size:18px;
+        justify-content: center;
+        padding: 5px;
+        color:black;
+        border:hidden;
+    }
+    p{
+        color:white;
+        font-size: 18px;
+        text-align: center;
+        text-shadow: black 2px 3px 3px;
+    }
+    #myn{
+        color:black;
+        white-space:nowrap;
+        overflow:hidden;
+        animation:typing 2.5s steps(40) infinite,
+        cursor .1s step-end infinite alternate;
+        text-shadow: #fff 2px 2px 3px ;
+    }
+    #boxn{
+       
+         width:500px;
+         padding:10px;
+        margin: auto;
+      
+       }
+   @keyframes cursor {
+     50%{border-color: transparent;}
+   }
+   @keyframes typing {
+    from{
+        width:0;
+    }
+    to{
+        width: 100%;
+    }
+   }
+
+    </style>
+</head>
+<body>
+    <div id="boxn">
+    <h1 id="myn">Developed By >> Pradip Mahajan</h1>
+</div>
+    <div class="all">
+    <h1 id="nam">Alarm Clock</h1>
+    <input type="text" id="get" placeholder="please enter time in seconds"><br>
+    <button id="btn">Set Alarm</button>
+    <p id="para"></p>
+    </div>
+    <script>
+        document.querySelector("#btn").addEventListener("click",handle);
+        function handle(){
+            var time=document.getElementById("get").value.trim();
+            var st=Number(time);
+            if(isNaN(st)||st<=0){
+                alert("please enter a valid positive number");
+                return;
+            }
+             var msg=new SpeechSynthesisUtterance("Weak Up Weak Up Weak Up Weak Up Weak Up Weak Up Weak Up Weak Up Weak Up Weak Up");
+             document.getElementById("para").innerHTML=`Alarm set for ${st} seconds`;
+
+            setTimeout(()=>{
+              speechSynthesis.speak(msg);
+            },st*1000)
+        }
+    </script>
+</body>
+</html>
